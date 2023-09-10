@@ -24,6 +24,16 @@ addEventListener("submit", (event) => {
 
   console.log(`email submitted: ${email}`);
   console.log(`password submitted: ${password}`);
+
+  const emailCheck = usersTable.filter(user => user.username === email).length > 0 //.length > 0 checks if one is matching and makes it true
+  const passwordCheck = usersTable.filter(user => user.password === password).length > 0
+  
+  if(emailCheck && passwordCheck){
+    renderSuccess()
+  } else {
+    renderError()
+  }
+
   /*
     TODO:
     1. Check if the email and password are valid (using the usersTable)
